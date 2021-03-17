@@ -103,7 +103,7 @@ public class PersonDaoImpl implements PersonDao {
 		
 		Connection conn = ConnectionFactory.getConnection();
 		
-		String sql = "delete * from persons where first_name = ? and last_name = ?";
+		String sql = "delete from persons where first_name = ? and last_name = ?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

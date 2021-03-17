@@ -46,7 +46,9 @@ class PersonServiceImplTest {
 
 	@Test
 	void testRemovePerson() {
-		fail("Not yet implemented");
+		service.removePerson(person);
+		
+		assertFalse(service.existingPerson(person));
 	}
 
 	@Test
