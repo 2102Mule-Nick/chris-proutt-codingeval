@@ -8,7 +8,7 @@ public interface PersonDao {
 	
 	public void createPerson(Person person);
 	
-	public void updateRelationship(Person person, String newRelationship);
+	public void updateRelationship(Person child, Person parent, String newRelationship);
 	
 	public Person getPersonByName(String firstName, String lastName);
 	
