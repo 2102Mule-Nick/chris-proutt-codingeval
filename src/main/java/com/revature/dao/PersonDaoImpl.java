@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -69,13 +70,50 @@ public class PersonDaoImpl implements PersonDao {
 
 	@Override
 	public Person getPersonByName(String firstName, String lastName) {
-		// TODO Auto-generated method stub
-		return null;
+		log.trace("Get Person By Name Called");
+		
+		Person person = null;
+		
+		Connection conn = ConnectionFactory.getConnection();
+		
+		String sql = "select * from persons where first_name = ? and last_name = ?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, firstName);
+			pstmt.setString(2, lastName);
+			ResultSet rs = pstmt.executeQuery() ;
+			
+			while(rs.next()) {
+				log.info("Person found in DB");
+				person = new Person();
+				person.setFirstName(rs.getString("first_name"));
+				person.setLastName(rs.getString("last_name"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return person;
 	}
 
 	@Override
 	public void deletePerson(Person person) {
-		// TODO Auto-generated method stub
+		
+		Connection conn = ConnectionFactory.getConnection();
+		
+		String sql = "delete * from persons where first_name = ? and last_name = ?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, person.getFirstName());
+			pstmt.setString(2, person.getLastName());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			log.error("Person not deleted. Connection failed!");
+			e.printStackTrace();
+		}
 
 	}
 

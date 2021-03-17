@@ -5,7 +5,10 @@ import java.util.List;
 import com.revature.pojo.Person;
 
 public interface PersonService {
-	public void addPersontoTree(Person person);
+	
+	public boolean existingPerson(Person person);
+	
+	public Person addPersontoTree(Person person);
 	
 	public void removePerson(Person person);
 	

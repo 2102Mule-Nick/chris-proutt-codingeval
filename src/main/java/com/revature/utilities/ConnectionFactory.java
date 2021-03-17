@@ -9,25 +9,25 @@ import org.apache.log4j.Logger;
 public class ConnectionFactory {
 	Logger log = Logger.getRootLogger();
 
-	public static String URL;
+	public static String URL = "jdbc:postgresql://localhost:5432/postgres?current_schema=codingeval?";
 
-	public static String USERNAME;
+	public static String USERNAME = "postgres";
 
-	public static String PASSWORD;
+	public static String PASSWORD = "Pas$wor12020";
 	
-	public static String DB_NAME;
+	public static String NAME = "postgres?current_schema=codingeval";
 	
 	private static ConnectionFactory connectionFactory = null;
 
 	private ConnectionFactory() {
 		
-		DB_NAME = System.getenv("POS_DB_NAME");
+		/*NAME = System.getenv("DB_NAME");
 		
-		URL = "jdbc:postgresql://" + System.getenv("POS_DB_URL") + ":5432/" + DB_NAME + "?";
+		URL = "jdbc:postgresql://" + System.getenv("DB_URL") + ":5432/" + NAME + "?";
 
-		USERNAME = System.getenv("POS_DB_USERNAME");
+		USERNAME = System.getenv("DB_USERNAME");
 
-		PASSWORD = System.getenv("POS_DB_PASSWORD");
+		PASSWORD = System.getenv("DB_PASSWORD");*/
 	}
 	
 	
